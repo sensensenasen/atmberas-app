@@ -1,4 +1,4 @@
-# kulineran
+# ATM Beras App
 
 ## Project setup
 ```
