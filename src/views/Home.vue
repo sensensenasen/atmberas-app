@@ -9,8 +9,8 @@
         </div>
       </div>
       <div class="row mt-4">
-        <div class="col" style="height: 300px;">
-          <ag-grid-vue style="width: 100%; height: 100%;" class="ag-theme-alpine" :columnDefs="columnDefs" :rowData="logs" @grid-ready="onGridReady" :overlayLoadingTemplate="overlayLoadingTemplate"> </ag-grid-vue>
+        <div class="col" style="height: 300px">
+          <ag-grid-vue style="width: 100%; height: 100%" class="ag-theme-alpine" :columnDefs="columnDefs" :rowData="logs" @grid-ready="onGridReady" :overlayLoadingTemplate="overlayLoadingTemplate"> </ag-grid-vue>
         </div>
       </div>
     </div>
@@ -51,13 +51,13 @@ export default {
   beforeMount() {
     var self = this;
     self.columnDefs = [
+      { field: "createdAt", headerName: "Date Log", type: ["dateColumn", "nonEditableColumn"] },
       { field: "log_type", headerName: "Log" },
       { field: "uid_card", headerName: "Card" },
       { field: "username", headerName: "Name" },
       { field: "nik", headerName: "NIK" },
       { field: "berat_beras", headerName: "Berat Beras" },
       { field: "counter", headerName: "Penghitung" },
-      { field: "createdAt", headerName: "Date Log", type: ["dateColumn", "nonEditableColumn"] },
     ];
   },
   methods: {
@@ -73,7 +73,7 @@ export default {
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
-    getData: function() {
+    getData: function () {
       var self = this;
 
       self.gridApi.showLoadingOverlay();
@@ -85,7 +85,7 @@ export default {
         })
         .catch((error) => console.log(error));
     },
-    onRefresh: function(e) {
+    onRefresh: function (e) {
       e.preventDefault();
       this.getData();
     },
