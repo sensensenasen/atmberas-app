@@ -4,16 +4,27 @@
     <div class="container">
       <BannerSetup />
       <div class="row mt-4">
+        <div class="col">
+          <button class="btn btn-md btn-success" @click="$bvModal.show('bv-modal-example')">Add User</button>
+        </div>
+      </div>
+      <div class="row mt-2">
         <div class="col" style="height: 300px;">
           <ag-grid-vue style="width: 100%; height: 100%;" class="ag-theme-alpine" :columnDefs="columnDefs" :rowData="users" @grid-ready="onGridReady" :overlayLoadingTemplate="overlayLoadingTemplate"> </ag-grid-vue>
         </div>
       </div>
-      <div class="row mt-4">
-        <div class="col">
+      <div class="row mt-4 justify-content-center">
+        <div class="col-3">
           <button class="btn btn-sm btn-danger" @click="onReset">Reset Penghitung</button>
         </div>
       </div>
     </div>
+
+    <!-- Modal add user -->
+    <b-modal id="bv-modal-example" hide-footer>
+      <template #modal-title> Add User </template>
+      <AddUser @close-modal="eventCallback" />
+    </b-modal>
   </div>
 </template>
 
@@ -22,6 +33,7 @@
 // import axios from "axios";
 import Navbar from "@/components/Navbar.vue";
 import BannerSetup from "@/components/BannerSetup.vue";
+import AddUser from "@/components/AddUser.vue";
 
 import axios from "axios";
 
@@ -36,6 +48,7 @@ export default {
     Navbar,
     BannerSetup,
     "ag-grid-vue": AgGridVue,
+    AddUser,
   },
   data() {
     return {
@@ -124,7 +137,7 @@ export default {
             self.getData();
           } else if (response.data.error) {
             self.$toast.info(response.data.error, {
-              type: "success",
+              type: "info",
               position: "top-right",
               duration: 3000,
               dismissible: true,
@@ -132,6 +145,10 @@ export default {
           }
         })
         .catch((error) => console.log(error));
+    },
+    eventCallback: function() {
+      this.$bvModal.hide("bv-modal-example");
+      this.getData();
     },
   },
   mounted() {

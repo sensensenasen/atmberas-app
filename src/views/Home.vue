@@ -5,7 +5,7 @@
       <Hero />
       <div class="row mt-4">
         <div class="col-2">
-          <button class="btn btn-sm btn-success" @click="onRefresh">Refresh</button>
+          <button class="btn btn-md btn-success" @click="onRefresh">Refresh</button>
         </div>
       </div>
       <div class="row mt-4">
@@ -73,7 +73,7 @@ export default {
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
-    getData: function () {
+    getData: function() {
       var self = this;
 
       self.gridApi.showLoadingOverlay();
@@ -85,7 +85,7 @@ export default {
         })
         .catch((error) => console.log(error));
     },
-    onRefresh: function (e) {
+    onRefresh: function(e) {
       e.preventDefault();
       this.getData();
     },
