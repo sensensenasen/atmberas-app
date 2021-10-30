@@ -8,7 +8,7 @@
           <button class="btn btn-md btn-success" @click="onRefresh">Refresh</button>
         </div>
       </div>
-      <div class="row mt-4">
+      <div class="row mt-2">
         <div class="col" style="height: 300px">
           <ag-grid-vue style="width: 100%; height: 100%" class="ag-theme-alpine" :columnDefs="columnDefs" :rowData="logs" @grid-ready="onGridReady" :overlayLoadingTemplate="overlayLoadingTemplate"> </ag-grid-vue>
         </div>
