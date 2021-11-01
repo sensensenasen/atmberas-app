@@ -1,6 +1,6 @@
 .DS_Store
-/atmberas-app/node_modules
-/atmberas-app/dist
+node_modules
+/dist
 
 
 # local env files
